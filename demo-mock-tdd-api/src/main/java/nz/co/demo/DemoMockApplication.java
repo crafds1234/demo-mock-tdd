@@ -1,6 +1,6 @@
 package nz.co.demo;
 
-public class Main {
+public class DemoMockApplication {
 
     public static void main(String... args) {
         System.out.println("test");
