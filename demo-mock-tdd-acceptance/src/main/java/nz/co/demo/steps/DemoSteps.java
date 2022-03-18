@@ -1,4 +1,4 @@
-package nz.co.demo;
+package nz.co.demo.steps;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

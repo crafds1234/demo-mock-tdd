@@ -1,9 +1,9 @@
 package nz.co.demo;
 
 import nz.co.demo.factory.TestFactory;
+import nz.co.demo.steps.DemoSteps;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
 
 import java.util.Random;
 
