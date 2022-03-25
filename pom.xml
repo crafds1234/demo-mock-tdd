@@ -33,6 +33,13 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/*Configuration.*</exclude>
+                        <exclude>**/*Application.*</exclude>
+                        <exclude>com/baeldung/**/*DTO.*</exclude>
+                    </excludes>
+                </configuration>
                 <version>0.8.7</version>
                 <executions>
                     <execution>
