@@ -1,6 +1,6 @@
-Feature: Is it Friday yet? Everybody wants to know when it's Friday
+Feature: As a grumpy product owner, I want to be able to register users
 
-  Scenario: Sunday isn't Friday
-    Given today is Sunday
-    When I ask whether it's Friday yet
-    Then I should be told "Nope"
+  Scenario: A valid user should be registered
+    Given I have a valid user
+    When I register that user
+    Then The user should be registered

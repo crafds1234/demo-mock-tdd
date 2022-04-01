@@ -21,8 +21,4 @@ public class DemoController {
         return "Hello world " + test;
     }
 
-    @GetMapping("/")
-    public String helloWorld2() {
-        return "Hello world";
-    }
 }

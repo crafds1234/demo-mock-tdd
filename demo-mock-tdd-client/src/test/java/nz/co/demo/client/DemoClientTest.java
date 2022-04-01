@@ -1,6 +1,8 @@
 package nz.co.demo.client;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import nz.co.demo.client.factory.DemoClientRequestFactory;
+import nz.co.demo.model.User;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,27 +23,31 @@ public class DemoClientTest {
     private DemoClient demoClient;
     private DemoClientRequestFactory demoClientRequestFactory;
     private HttpClient httpClient;
+    private ObjectMapper objectMapper;
 
     @Before
     public void setUp() {
         httpClient = mock(HttpClient.class);
         demoClientRequestFactory = mock(DemoClientRequestFactory.class);
-        demoClient = new DemoClient(httpClient, demoClientRequestFactory);
+        objectMapper = mock(ObjectMapper.class);
+        demoClient = new DemoClient(httpClient, demoClientRequestFactory, objectMapper);
     }
 
     @Test
     public void shouldRequestDemo() throws IOException, InterruptedException {
         HttpRequest httpRequest = mock(HttpRequest.class);
         HttpResponse httpResponse = mock(HttpResponse.class);
-        String expected = someString();
+        String expectedBodyAsString = someString();
+        User expected = mock(User.class);
 
         // Given
         given(demoClientRequestFactory.createDemoRequest()).willReturn(httpRequest);
         given(httpClient.send(eq(httpRequest), eq(HttpResponse.BodyHandlers.ofString()))).willReturn(httpResponse);
-        given(httpResponse.body()).willReturn(expected);
+        given(httpResponse.body()).willReturn(expectedBodyAsString);
+        given(objectMapper.convertValue(eq(expectedBodyAsString), eq(User.class))).willReturn(expected);
 
         // When
-        String actual = demoClient.test();
+        User actual = demoClient.test();
 
         // Then
         assertThat(actual, is(expected));
