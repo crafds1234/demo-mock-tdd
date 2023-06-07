@@ -28,11 +28,11 @@
     </build>
 
     <dependencies>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>demo-mock-tdd-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.example</groupId>-->
+<!--            <artifactId>demo-mock-tdd-api</artifactId>-->
+<!--            <version>1.0-SNAPSHOT</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.example</groupId>
             <artifactId>demo-mock-tdd-client</artifactId>

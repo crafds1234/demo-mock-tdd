@@ -6,11 +6,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserHolder {
 
+    private User user;
+
     public void hold(User user) {
-        throw new UnsupportedOperationException();
+        this.user = user;
     }
 
     public User get() {
-        throw new UnsupportedOperationException();
+        return user;
     }
 }

@@ -10,8 +10,8 @@ public class UserFactory {
     public User createValidUser() {
         User user = new User();
 
-        user.setFirstName(someAlphaString());
-        user.setLastName(someAlphaString());
+        user.setFirstName(someAlphaString(10));
+        user.setLastName(someAlphaString(10));
 
         return user;
     }
