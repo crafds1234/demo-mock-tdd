@@ -8,6 +8,7 @@ import nz.co.demo.factory.TaskFactory;
 import nz.co.demo.holder.TaskHolder;
 import nz.co.demo.model.Task;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -30,7 +31,7 @@ public class TodoSteps {
     }
 
     @When("I add that task")
-    public void iAddThatTask() {
+    public void iAddThatTask() throws IOException, InterruptedException {
         taskClient.add(taskHolder.get());
     }
 

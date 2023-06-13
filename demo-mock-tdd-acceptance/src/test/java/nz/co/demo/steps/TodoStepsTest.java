@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 import static java.util.Arrays.asList;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
@@ -21,7 +23,7 @@ class TodoStepsTest {
     private TaskClient taskClient;
 
     @BeforeEach
-    void setUp() {
+    public void setUp() {
         taskFactory = mock(TaskFactory.class);
         taskHolder = mock(TaskHolder.class);
         taskClient = mock(TaskClient.class);
@@ -29,7 +31,7 @@ class TodoStepsTest {
     }
 
     @Test
-    void canStoreATaskToGoToTheGym() {
+    public void canStoreATaskToGoToTheGym() {
 
         // Given
         Task taskToGoToTheGym = mock(Task.class);
@@ -43,7 +45,7 @@ class TodoStepsTest {
     }
 
     @Test
-    void canAddATask() {
+    public void canAddATask() throws IOException, InterruptedException {
         // Given
         Task task = mock(Task.class);
         given(taskHolder.get()).willReturn(task);
@@ -56,7 +58,7 @@ class TodoStepsTest {
     }
 
     @Test
-    void canSeeMyTaskAddedToTheTodoList() {
+    public void canSeeMyTaskAddedToTheTodoList() {
         Task taskToGoToTheGym = mock(Task.class);
 
         // Given
@@ -70,8 +72,8 @@ class TodoStepsTest {
         then(taskHolder).should().get();
     }
 
-    @Test()
-    void canFailToSeeMyTaskAddedToTheTodoList() {
+    @Test
+    public void canFailToSeeMyTaskAddedToTheTodoList() {
 
         Task taskToGoToTheGym = mock(Task.class);
 
@@ -80,9 +82,7 @@ class TodoStepsTest {
         given(taskHolder.get()).willReturn(taskToGoToTheGym);
 
         // When
-        Assertions.assertThrows(AssertionError.class, () -> {
-            steps.iShouldSeeThatTaskInMyTodoList();
-        });
+        Assertions.assertThrows(AssertionError.class, () -> steps.iShouldSeeThatTaskInMyTodoList());
 
         // Then
         then(taskHolder).should().get();
