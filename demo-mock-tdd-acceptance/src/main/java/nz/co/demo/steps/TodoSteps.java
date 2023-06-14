@@ -36,7 +36,7 @@ public class TodoSteps {
     }
 
     @Then("I should see that task in my todo list")
-    public void iShouldSeeThatTaskInMyTodoList() {
+    public void iShouldSeeThatTaskInMyTodoList() throws IOException, InterruptedException {
         List<Task> tasks = taskClient.fetchAll();
         assertThat(tasks, hasItem(taskHolder.get()));
     }

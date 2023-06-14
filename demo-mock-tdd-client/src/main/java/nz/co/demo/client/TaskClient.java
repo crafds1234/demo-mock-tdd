@@ -1,6 +1,7 @@
 package nz.co.demo.client;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.net.httpserver.Headers;
 import nz.co.demo.model.Task;
@@ -52,7 +53,18 @@ public class TaskClient {
         System.out.println(uri.getPort());
     }
 
-    public List<Task> fetchAll() {
-        throw new UnsupportedOperationException();
+    public List<Task> fetchAll() throws IOException, InterruptedException {
+        URI endpoint = URI.create(String.format("http://%s:%d/v1/tasks", hostname, port));
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .GET()
+                .setHeader("Content-Type", "application/json")
+                .uri(endpoint)
+                .build();
+        HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        if(response.statusCode() != 200)
+        {
+            throw new RuntimeException(response.body());
+        }
+        return objectMapper.readValue(response.body(), new TypeReference<List<Task>>() {});
     }
 }
