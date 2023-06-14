@@ -46,6 +46,7 @@ class TodoStepsTest {
 
     @Test
     public void canAddATask() throws IOException, InterruptedException {
+
         // Given
         Task task = mock(Task.class);
         given(taskHolder.get()).willReturn(task);
@@ -59,6 +60,7 @@ class TodoStepsTest {
 
     @Test
     public void canSeeMyTaskAddedToTheTodoList() throws IOException, InterruptedException {
+
         Task taskToGoToTheGym = mock(Task.class);
 
         // Given
