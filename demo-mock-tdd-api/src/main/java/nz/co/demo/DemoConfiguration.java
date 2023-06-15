@@ -1,6 +1,5 @@
 package nz.co.demo;
 
-import nz.co.demo.model.Task;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

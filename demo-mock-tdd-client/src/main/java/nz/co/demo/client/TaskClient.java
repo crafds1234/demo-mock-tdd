@@ -2,7 +2,6 @@ package nz.co.demo.client;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nz.co.demo.model.Task;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
