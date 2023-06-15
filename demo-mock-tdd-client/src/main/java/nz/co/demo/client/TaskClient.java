@@ -45,11 +45,6 @@ public class TaskClient {
         }
     }
 
-    public static void main(String[] args) {
-        URI uri = URI.create("http://localhost:8080/v1/tasks");
-        System.out.println(uri.getPort());
-    }
-
     public List<Task> fetchAll() throws IOException, InterruptedException {
         URI endpoint = URI.create(String.format("http://%s:%d/v1/tasks", hostname, port));
         HttpRequest httpRequest = HttpRequest.newBuilder()
